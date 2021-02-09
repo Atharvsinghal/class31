@@ -1,3 +1,38 @@
+//string
+var name="Atharv";
+console.log(name);
+
+//numerical
+var num=13;
+console .log(num);
+
+//boolean
+var bool=true;
+console.log(bool);
+
+//undefined
+var object;
+console .log(object)
+
+//null
+object=null;
+console.log(object);
+
+//Arrays
+arr1=[1,2,3]
+console.log(arr1);
+console.log(arr1[1]);
+   //    0 1 
+arr2=[  [2,3]  ,  [4,5]    ,[6,7]       ]
+    //     0        1          2
+console.log(arr2);
+console.log(arr2[0][1]);
+console.log(arr2[1][0])
+arr2.push([8,9])
+console.log(arr2)
+arr2.pop();
+console.log(arr2);
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,7 +42,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
-
+var gamestate="onsling"
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +104,18 @@ function draw(){
 }
 
 function mouseDragged(){
+    if(gamestate!=="launched"){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
-}
+}}
 
 
 function mouseReleased(){
     slingshot.fly();
+    gamestate="launched"
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+     //   slingshot.attach(bird.body);
     }
 }
